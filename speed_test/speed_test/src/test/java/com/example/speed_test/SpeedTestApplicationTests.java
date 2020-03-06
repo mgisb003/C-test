@@ -42,7 +42,7 @@ class SpeedTestApplicationTests {
 	   */
 	@Test
 	public void speedResultFindByIdTest() {
-	  when(speedRepo.findById(1)).thenReturn(Optional.of(testSpeedResult));
+	  when(speedRepo.findById((long) 1)).thenReturn(Optional.of(testSpeedResult));
 
 	    assertEquals(testSpeedResult, speedService.findById(1));
 	  

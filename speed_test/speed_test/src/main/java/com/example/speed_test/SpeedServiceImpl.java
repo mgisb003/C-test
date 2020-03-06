@@ -12,7 +12,7 @@ public class SpeedServiceImpl implements SpeedService{
 
   @Override
   public SpeedResult findById(long id) {
-    Optional<SpeedResult> response = this.speedRepository.findById((int) id);    
+    Optional<SpeedResult> response = this.speedRepository.findById(id);    
     return response.get();
   }
 
