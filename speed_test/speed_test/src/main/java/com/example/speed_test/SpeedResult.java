@@ -5,6 +5,7 @@ import java.time.Duration;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 @Entity
 public class SpeedResult {
@@ -15,10 +16,10 @@ public class SpeedResult {
   @Column
   private String subjectName;
   
-  
+  @Transient
   private Speed speed;
   
-  
+  @Transient
   private Timestamp experimentTime;
   
   
