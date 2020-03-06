@@ -9,5 +9,7 @@ class AggregatedServiceApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+	
+	
 
 }
