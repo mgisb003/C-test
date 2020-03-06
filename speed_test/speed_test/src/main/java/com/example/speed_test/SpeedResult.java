@@ -20,10 +20,7 @@ public class SpeedResult {
   private Speed speed;
   
   @Transient
-  private Timestamp experimentTime;
-  
-  
-  
+  private Timestamp experimentTime;  
 
   public SpeedResult() {
     super();
@@ -64,9 +61,6 @@ public class SpeedResult {
   public void setExperimentTime(Timestamp experimentTime) {
     this.experimentTime = experimentTime;
   }
-  
-  
-  
 
 }
 
