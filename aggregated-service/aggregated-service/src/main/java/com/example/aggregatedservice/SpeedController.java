@@ -14,9 +14,9 @@ public class SpeedController {
   @PostMapping("/api/experiment")
   
   
-  @GetMapping("/api")
-  public String getSpeed() {
-    return speedsFeign.getSpeed()+ "FROM Aggregated-service_aggregated-service";
+  @GetMapping("/api/exeriment?subjectName=\"Drop Tennis Ball\"&convertTo=\"Feet\"")
+  public void getSpeed() {
+    
   }
   
 
