@@ -12,10 +12,15 @@ public class SpeedController {
   SpeedsFeign speedsFeign;
   
   @PostMapping("/api/experiment")
+  public String saveSpeed() {
+    return speedsFeign.postSpeed();
+    
+  }
   
   
   @GetMapping("/api/exeriment?subjectName=\"Drop Tennis Ball\"&convertTo=\"Feet\"")
-  public void getSpeed() {
+  public String getSpeed() {
+    return speedsFeign.getSpeed();
     
   }
   
