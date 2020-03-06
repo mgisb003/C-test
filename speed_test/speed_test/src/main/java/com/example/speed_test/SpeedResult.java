@@ -25,11 +25,15 @@ public class SpeedResult {
   
   
 
-  public SpeedResult() {
+  public SpeedResult(long id2) {
     super();
   }
 
   public Long getId() {
+    return id;
+  }
+  
+  public Long getId(Long id) {
     return id;
   }
 

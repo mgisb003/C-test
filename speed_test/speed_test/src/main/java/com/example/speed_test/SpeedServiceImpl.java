@@ -1,18 +1,16 @@
 package com.example.speed_test;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import java.util.Optional;
 import org.springframework.stereotype.Service;
+import com.revaturelabs.ask.tag.Tag;
 
 @Service
 public class SpeedServiceImpl implements SpeedService{
- 
-  @Autowired
-  private SpeedRepository speedRepo;
 
   @Override
   public SpeedResult findById(long id) {
-    // TODO Auto-generated method stub
-    return null;
+    SpeedResult newSpeed = new SpeedResult(id);
+    return newSpeed;
   }
 
   @Override

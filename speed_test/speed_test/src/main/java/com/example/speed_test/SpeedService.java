@@ -8,7 +8,7 @@ public interface SpeedService {
   /***
    * "findById" finds the SpeedResult by Id
    * 
-   * @param id
+   * @param i
    * @return
    */
   SpeedResult findById(long id);
