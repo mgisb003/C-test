@@ -1,5 +1,7 @@
 package com.example.speed_test;
 
+import java.security.Timestamp;
+import java.time.Duration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,11 +27,16 @@ public class SpeedTestApplication {
 	@Autowired
 	  SpeedService speedService;
 	  
-	  @PostMapping("/api/experiment/{id}/{subjectName}")
-	  public SpeedResult saveSpeed(@PathVariable Long id,@PathVariable String subjectName) {
+	  @PostMapping("/api/experiment/{id}/{subjectName}/{time}/{distance}/{experimentTime}")
+	  public SpeedResult saveSpeed(@PathVariable Long id,@PathVariable String subjectName,@PathVariable CharSequence time,@PathVariable Distance distance, @PathVariable java.sql.Timestamp experimentTime) {
 	    SpeedResult newSpeed = new SpeedResult();
 	    newSpeed.setId(id);
 	    newSpeed.setSubjectName(subjectName);
+	    Speed speed = new Speed();
+	    speed.setDistance((Distance) distance);	    
+	    speed.setDuration(Duration.parse(time));
+	    newSpeed.setSpeed(speed);
+	    newSpeed.setExperimentTime(experimentTime);
 	    return speedService.create(newSpeed);
 	  }
 	  

@@ -3,6 +3,8 @@ package com.example.speed_test;
 import java.sql.Timestamp;
 import java.time.Duration;
 import javax.persistence.Column;
+import javax.persistence.Embeddable;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
@@ -16,10 +18,10 @@ public class SpeedResult {
   @Column
   private String subjectName;
   
-  @Transient
+  @Embedded
   private Speed speed;
   
-  @Transient
+  @Column
   private Timestamp experimentTime;  
 
   public SpeedResult() {
@@ -61,17 +63,65 @@ public class SpeedResult {
   public void setExperimentTime(Timestamp experimentTime) {
     this.experimentTime = experimentTime;
   }
+  
+  
 
 }
 
 class Speed{
-  private Duration duration;
+  
+  @Column
+  private Duration duration;  
+
+  @Embedded
   private Distance distance;
+
+  public Duration getDuration() {
+    return duration;
+  }
+
+  public void setDuration(Duration duration) {
+    this.duration = duration;
+  }
+
+  public Distance getDistance() {
+    return distance;
+  }
+
+  public void setDistance(Distance distance) {
+    this.distance = distance;
+  }
+
+  public Speed() {
+    super();
+  }
+  
+  
+  
 }
 
 class Distance{
+  @Column
   private DistanceUnit distanceUnit;
+  @Column
   private Double unit;
+  public DistanceUnit getDistanceUnit() {
+    return distanceUnit;
+  }
+  public void setDistanceUnit(DistanceUnit distanceUnit) {
+    this.distanceUnit = distanceUnit;
+  }
+  public Double getUnit() {
+    return unit;
+  }
+  public void setUnit(Double unit) {
+    this.unit = unit;
+  }
+  public Distance() {
+    super();
+  }
+  
+  
 }
 
 enum DistanceUnit {
