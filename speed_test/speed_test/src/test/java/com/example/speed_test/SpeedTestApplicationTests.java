@@ -1,8 +1,11 @@
 package com.example.speed_test;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.when;
 import java.util.List;
+import java.util.Optional;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -12,15 +15,21 @@ import org.springframework.boot.test.context.SpringBootTest;
 class SpeedTestApplicationTests {
   
   @Mock
-  private SpeedService speedService;
+  private SpeedRepository speedRepo;
+  
+  @Mock
+  private SpeedServiceImpl speedServiceImpl;
+  
+  @InjectMocks
+  private SpeedService speedService = new SpeedServiceImpl();
   
   static SpeedResult testSpeedResult;
   
   static List<SpeedResult> testSpeedResultReturnList;
   
   static {
-    testSpeedResult = new SpeedResult(1);
-//    testSpeedResult.setId((long) 1);
+    testSpeedResult = new SpeedResult();
+    testSpeedResult.setId((long) 1);
     testSpeedResult.setSubjectName("Test 1");
   }
 
@@ -33,16 +42,17 @@ class SpeedTestApplicationTests {
 	   */
 	@Test
 	public void speedResultFindByIdTest() {
-//	  SpeedResult sr = new SpeedResult();
-//	  sr.setId((long)1);
-//	  sr.setSubjectName("test 1");
-	  
-	 // assertThat(sr, speedService.findById(1));
-	 // assertThat(speedService.findById(1)).isNotNull();
-	  assertEquals(testSpeedResult.getId(), speedService.findById(1));
-	  
-	  
+	  when(speedRepo.findById(1)).thenReturn(Optional.of(testSpeedResult));
+
+	    assertEquals(testSpeedResult, speedService.findById(1));
 	  
 	}
+	
+	 @Test
+	  public void speedCreate() {
+	    when(speedRepo.save(testSpeedResult)).thenReturn(testSpeedResult);
+
+	    assertEquals(testSpeedResult, speedService.create(testSpeedResult));
+	  }
 
 }

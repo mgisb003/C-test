@@ -25,7 +25,7 @@ public class SpeedResult {
   
   
 
-  public SpeedResult(long id2) {
+  public SpeedResult() {
     super();
   }
 
