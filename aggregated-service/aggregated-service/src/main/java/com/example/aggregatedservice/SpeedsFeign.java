@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 public interface SpeedsFeign {
   
     @GetMapping("/api/exeriment?subjectName=\"Drop Tennis Ball\"&convertTo=\"Feet\"")
-    public String getSpeed();
+    public Long getSpeed();
     
     @PostMapping("/api/experiment")
-    public String postSpeed();
+    public Object postSpeed();
 
   }
 
